@@ -66,14 +66,77 @@
     <section id="panel-net" class="hidden space-y-4">
       <h2 class="text-xl font-semibold">How Net Metering Works</h2>
       <p class="text-slate-700">
-        Your credits depend on the <em>buy</em> rate (utility energy you use) and the <em>sell</em> credit (for exports). The tool shows how close you are to net-zero given your local irradiance and array size, and computes the bill/credit at your rates.
-      </p>
-      <ol class="list-decimal pl-5 text-slate-700 space-y-1">
-        <li>PV serves on-site loads first.</li>
-        <li>Excess exports earn credits at the sell rate.</li>
-        <li>Imports are charged at the buy rate.</li>
-        <li>Annual true-up depends on utility policy.</li>
-      </ol>
+    Net metering allows solar owners to stay connected to the utility grid while offsetting their electricity bills. 
+    Your system’s meter tracks both <em>imports</em> (electricity you use from the grid) and <em>exports</em> 
+    (excess energy you send back). The utility then applies credits to your bill based on these energy flows.
+  </p>
+
+  <div class="rounded-xl bg-white border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Step-by-Step Energy Flow</h3>
+    <ol class="list-decimal pl-5 space-y-1 text-slate-700 text-sm">
+      <li><strong>Generation:</strong> Your PV array produces DC power, converted to AC by the inverter.</li>
+      <li><strong>Self-Use:</strong> The home consumes this solar power instantly when available.</li>
+      <li><strong>Export:</strong> Surplus solar energy is exported to the grid and tracked by a bi-directional meter.</li>
+      <li><strong>Credit:</strong> Each exported kWh earns a credit at the <em>sell rate</em> (¢/kWh).</li>
+      <li><strong>Import:</strong> When production is low (night or cloudy days), power is imported from the grid at the <em>buy rate</em>.</li>
+      <li><strong>True-Up:</strong> At month or year end, your total imports and exports are reconciled by the utility.</li>
+    </ol>
+  </div>
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Bill or Credit Calculation</h3>
+    <p class="text-sm text-slate-700">
+      The calculator uses these rates to determine your bill outcome:
+    </p>
+    <pre class="text-sm bg-white border border-slate-200 p-3 rounded-md overflow-x-auto">
+Annual Bill ($) = (Import kWh × Buy Rate) − (Export kWh × Sell Rate)
+    </pre>
+    <p class="text-sm text-slate-600">
+      If the result is positive → you owe the utility.  
+      If negative → you receive a credit.  
+      When <em>Annual Production ≈ Annual Load</em>, the system achieves “Net Zero.”
+    </p>
+  </div>
+
+  <div class="rounded-xl bg-white border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Example Scenario</h3>
+    <p class="text-sm text-slate-700">
+      Suppose a home uses <strong>10,000 kWh/yr</strong> and the PV system produces <strong>11,000 kWh/yr</strong>.  
+      At a <strong>Buy Rate = $0.20/kWh</strong> and <strong>Sell Rate = $0.10/kWh</strong>:
+    </p>
+    <ul class="list-disc pl-6 text-sm text-slate-700 mt-2 space-y-1">
+      <li>Export = 1,000 kWh → credit of $100</li>
+      <li>Import = 0 kWh → no grid usage</li>
+      <li>Annual Bill = −$100 (credit carried forward)</li>
+    </ul>
+    <p class="text-xs text-slate-500 mt-2">
+      In this example, the household achieved net-positive generation; excess credits may roll over or expire depending on the utility’s true-up policy.
+    </p>
+  </div>
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Common Policy Variations</h3>
+    <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+      <li><strong>Full Retail Credit:</strong> Exports valued at the same rate as imports (traditional NEM 1.0).</li>
+      <li><strong>Avoided Cost Credit:</strong> Lower sell rate (reflects utility’s wholesale value, e.g. NEM 3.0).</li>
+      <li><strong>Monthly True-Up:</strong> Credits reset each month, favoring self-consumption.</li>
+      <li><strong>Annual True-Up:</strong> Credits roll for 12 months, good for seasonal solar regions.</li>
+    </ul>
+  </div>
+
+  <div class="rounded-xl bg-white border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Tips for Optimization</h3>
+    <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+      <li>Size PV slightly below total annual load if export credits are low.</li>
+      <li>Use smart appliances or small batteries to shift solar use into evenings.</li>
+      <li>Track local tariff updates—small changes in sell rate can change ROI.</li>
+      <li>Compare hybrid (PV + battery) setups if you face low export rates.</li>
+    </ul>
+  </div>
+
+  <p class="text-xs text-slate-500">
+    Content adapted for educational comparison; always check your utility’s current net-metering and interconnection rules.
+  </p>
     </section>
 
     <!-- Case Studies -->
