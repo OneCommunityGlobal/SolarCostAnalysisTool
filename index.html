@@ -270,21 +270,83 @@ Annual Bill ($) = (Import kWh × Buy Rate) − (Export kWh × Sell Rate)
     <!-- Policy -->
     <section id="panel-policy" class="hidden space-y-4">
       <h2 class="text-xl font-semibold">Policy Landscape & Practical Tips</h2>
-      <p class="text-slate-700">Lower export credits favor self-consumption or small batteries; generous credits favor larger grid-tie arrays.</p>
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Check Tariffs</h3>
-          <p class="text-slate-600 text-sm">Time-of-use and export credit rules can flip the answer.</p>
-        </div>
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Backup Value</h3>
-          <p class="text-slate-600 text-sm">Small batteries add resilience even on grid-tied systems.</p>
-        </div>
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Extension Cost</h3>
-          <p class="text-slate-600 text-sm">Remote sites: compare $/ft grid extension vs off-grid CAPEX.</p>
-        </div>
-      </div>
+     
+  <p class="text-slate-700">
+    Policy and tariff structures play a major role in determining whether a grid-tied, hybrid, or off-grid system makes 
+    the most sense financially. Export credit values, interconnection fees, and incentives can shift payback periods by years. 
+    This section outlines the key factors to monitor before committing to a system design.
+  </p>
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">How Policy Impacts System Choice</h3>
+    <ul class="list-disc pl-6 text-slate-700 text-sm space-y-1">
+      <li><strong>Export Credits:</strong> Define how much you earn for each excess kWh sent to the grid. 
+          Lower credits favor self-consumption and batteries.</li>
+      <li><strong>Time-of-Use (TOU) Tariffs:</strong> Electricity prices vary by time of day; exporting midday solar at 
+          low value and importing in the evening at high value can erode savings.</li>
+      <li><strong>Net Billing vs Net Metering:</strong> Under net billing, exports are valued lower than imports; under 
+          net metering, they are typically equal. Know your local policy.</li>
+      <li><strong>Incentives & Tax Credits:</strong> Federal or state incentives can reduce upfront CAPEX by 20–40%, 
+          improving LCOE for both grid-tied and off-grid systems.</li>
+    </ul>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="rounded-xl bg-white border border-slate-200 p-4">
+      <h3 class="font-semibold mb-1">Check Tariffs</h3>
+      <p class="text-slate-600 text-sm">
+        Review your utility’s <em>time-of-use</em> and <em>export credit</em> rates. 
+        A favorable net-metering policy (1:1 buy/sell) makes grid-tie more cost-effective; 
+        under reduced export credits (e.g., 30–50% of buy rate), battery self-use becomes more valuable.
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border border-slate-200 p-4">
+      <h3 class="font-semibold mb-1">Backup Value</h3>
+      <p class="text-slate-600 text-sm">
+        Adding even a small 10–15 kWh battery can shift self-consumption into high-value hours, 
+        reduce exposure to TOU rates, and provide outage resilience — often improving payback 
+        under NEM 3.0 or net billing frameworks.
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border border-slate-200 p-4">
+      <h3 class="font-semibold mb-1">Extension Cost</h3>
+      <p class="text-slate-600 text-sm">
+        For remote sites, compare the total cost of extending grid service (distance × $/ft) 
+        with the CAPEX of an off-grid solar + battery system. If extension cost exceeds $25k–$40k, 
+        off-grid autonomy often becomes economically favorable despite higher LCOE.
+      </p>
+    </div>
+  </div>
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Practical Steps Before Installation</h3>
+    <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+      <li>Contact your utility or regulator to confirm the latest <strong>net-metering and interconnection policy</strong>.</li>
+      <li>Model your expected <strong>export/import balance</strong> using average daily load and irradiance.</li>
+      <li>Evaluate <strong>hybrid (PV + battery)</strong> setups if your export credit is below 50% of your buy rate.</li>
+      <li>Account for <strong>permit, interconnect, and maintenance fees</strong> in the CAPEX estimate.</li>
+      <li>Lock in your <strong>net-metering terms</strong> before policy revisions — grandfathered rates can preserve ROI.</li>
+    </ul>
+  </div>
+
+  <div class="rounded-xl bg-white border border-slate-200 p-4">
+    <h3 class="font-semibold mb-2">Example Policy Sensitivity</h3>
+    <p class="text-sm text-slate-700">
+      A 10 kW rooftop system producing 15,000 kWh/year in a region with a $0.20/kWh buy rate:
+    </p>
+    <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+      <li>At <strong>1:1 Net Metering</strong> → near net-zero bill; payback ≈ 7 years.</li>
+      <li>At <strong>50% Export Credit</strong> → ~20% higher payback time; hybrid system recommended.</li>
+      <li>At <strong>25% Export Credit</strong> → battery storage nearly essential for economic parity.</li>
+    </ul>
+  </div>
+
+  <p class="text-xs text-slate-500">
+    Content adapted for educational comparison; use time-series simulators and verified utility tariffs 
+    for final financial modeling.
+  </p>
     </section>
 
     <!-- Tool -->
