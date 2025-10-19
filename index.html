@@ -13,6 +13,7 @@
     .tab-btn{border-bottom:2px solid transparent}
     .tab-btn[aria-selected="true"]{color:#0f172a;border-color:#0f172a;font-weight:700}
     .container-narrow{max-width:1100px}
+    .hint{background:linear-gradient(0deg,#f8fafc,#fff);border:1px dashed #cbd5e1}
   </style>
 </head>
 
@@ -42,26 +43,21 @@
     <section id="panel-overview" class="space-y-4">
       <h2 class="text-xl font-semibold">Overview</h2>
       <p class="text-slate-700">
-        Solar has moved from niche to mainstream as panel costs keep falling and annual U.S. installations rise.
-        Homeowners generally choose between three paths: a <span class="font-semibold">grid-tied</span> system that
-        feeds extra power to the utility, a <span class="font-semibold">net-zero grid-tied</span> system that offsets
-        a year of usage through credits, or a <span class="font-semibold">fully off-grid</span> setup with batteries for
-        independence. Use the tabs to learn the basics, see real-world scenarios, and run your own numbers with the
-        calculator to compare the cost of energy (LCOE), bill impacts, and policy sensitivity.
+        Compare a <span class="font-semibold">net-zero grid-tied</span> design (sized to offset a year of use via credits) with a <span class="font-semibold">fully off-grid</span> design (PV + batteries sized for autonomy). Enter your load, site irradiance, component specs, and grid economics; the tool sizes arrays, batteries, and inverters, then estimates CAPEX and LCOE for each path.
       </p>
 
       <div class="grid md:grid-cols-3 gap-4">
         <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Grid-Tied</h3>
-          <p class="text-slate-600 text-sm">Lowest complexity; relies on the utility; can earn credits for exports.</p>
-        </div>
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Net-Zero (Grid)</h3>
-          <p class="text-slate-600 text-sm">Larger array targets ~100% of annual use; policy terms matter most.</p>
+          <h3 class="font-semibold mb-1">Grid-Tied (Net-Zero)</h3>
+          <p class="text-slate-600 text-sm">Targets ~100% annual offset; highly policy-sensitive (buy/sell rates).</p>
         </div>
         <div class="rounded-xl bg-white border border-slate-200 p-4">
           <h3 class="font-semibold mb-1">Off-Grid</h3>
-          <p class="text-slate-600 text-sm">Highest independence with batteries; higher cost per kWh today.</p>
+          <p class="text-slate-600 text-sm">PV + storage sized for autonomy; higher CAPEX but independence.</p>
+        </div>
+        <div class="rounded-xl bg-white border border-slate-200 p-4">
+          <h3 class="font-semibold mb-1">Decision Hook</h3>
+          <p class="text-slate-600 text-sm">If grid extension is costly, off-grid may pencil out despite higher LCOE.</p>
         </div>
       </div>
     </section>
@@ -70,18 +66,13 @@
     <section id="panel-net" class="hidden space-y-4">
       <h2 class="text-xl font-semibold">How Net Metering Works</h2>
       <p class="text-slate-700">
-        With net metering, your meter tracks both imports from and exports to the grid. When your panels make more than
-        you use, the excess flows to the grid and you earn credits; when production is low (evening/winter), you draw on
-        those credits. Your yearly bill depends on the balance between import kWh at the <em>buy rate</em> and export kWh
-        at the <em>sell credit</em> rate. Favorable policies make net-zero practical without batteries; reduced export
-        credits shift value toward on-site use or storage.
+        Your credits depend on the <em>buy</em> rate (utility energy you use) and the <em>sell</em> credit (for exports). The tool shows how close you are to net-zero given your local irradiance and array size, and computes the bill/credit at your rates.
       </p>
       <ol class="list-decimal pl-5 text-slate-700 space-y-1">
-        <li><span class="font-semibold">Energy production:</span> rooftop PV generates for home use first.</li>
-        <li><span class="font-semibold">Grid connection:</span> surplus is exported automatically.</li>
-        <li><span class="font-semibold">Metering & credits:</span> a bi-directional meter tracks imports/exports and assigns credits.</li>
-        <li><span class="font-semibold">Bill offset:</span> credits offset future usage charges.</li>
-        <li><span class="font-semibold">Settlement:</span> some utilities true-up monthly or annually based on their rules.</li>
+        <li>PV serves on-site loads first.</li>
+        <li>Excess exports earn credits at the sell rate.</li>
+        <li>Imports are charged at the buy rate.</li>
+        <li>Annual true-up depends on utility policy.</li>
       </ol>
     </section>
 
@@ -92,25 +83,14 @@
       <div class="rounded-2xl bg-white border border-slate-200 p-5">
         <h3 class="font-semibold">1) Off-Grid Cabin (8 kW + 48 kWh)</h3>
         <p class="text-slate-700 text-sm">
-          Remote site with two days of storage. Produces ~16,060 kWh/yr vs ~9,125 kWh/yr used; true independence,
-          but higher upfront cost and battery replacements every 10–15 years. Excess summer generation is unused without
-          more storage or flexible loads.
+          Two days of autonomy, generator reserve for winter. Highest CAPEX; strong resilience.
         </p>
       </div>
 
       <div class="rounded-2xl bg-white border border-slate-200 p-5">
-        <h3 class="font-semibold">2) Minimal Grid-Tied (4 kW)</h3>
+        <h3 class="font-semibold">2) Net-Zero Suburban Roof (10 kW)</h3>
         <p class="text-slate-700 text-sm">
-          Cost-conscious home covering ~50% of annual use (~8,030 of 10,950 kWh). Lower entry cost, simple maintenance,
-          ongoing reliance on the grid, and no backup during outages. Clear path to expand later.
-        </p>
-      </div>
-
-      <div class="rounded-2xl bg-white border border-slate-200 p-5">
-        <h3 class="font-semibold">3) Net-Zero Grid-Tied (10 kW)</h3>
-        <p class="text-slate-700 text-sm">
-          Targets ~110% of annual use (~20,075 kWh made; ~9,125 kWh exported). Achieves net-zero annually using credits;
-          no batteries, so no outage backup. Most sensitive to local export rates and policy changes.
+          Sized by irradiance × performance ratio; bill impact depends on buy/sell rates.
         </p>
       </div>
     </section>
@@ -118,74 +98,48 @@
     <!-- Policy -->
     <section id="panel-policy" class="hidden space-y-4">
       <h2 class="text-xl font-semibold">Policy Landscape & Practical Tips</h2>
-      <p class="text-slate-700">
-        Export credit reductions can change grid-tied economics quickly. If policy is favorable, locking in terms before
-        changes can help. Where export credits are modest, a hybrid approach (small battery for self-use and backup) can
-        reduce exposure and improve resilience. Always compare the value of <em>on-site use</em> vs <em>export</em> at local rates.
-      </p>
+      <p class="text-slate-700">Lower export credits favor self-consumption or small batteries; generous credits favor larger grid-tie arrays.</p>
       <div class="grid md:grid-cols-3 gap-4">
         <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">If Installing Soon</h3>
-          <p class="text-slate-600 text-sm">Check current net-metering rules; consider sizing for self-use; capture incentives while available.</p>
+          <h3 class="font-semibold mb-1">Check Tariffs</h3>
+          <p class="text-slate-600 text-sm">Time-of-use and export credit rules can flip the answer.</p>
         </div>
         <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">If Rules Are Tight</h3>
-          <p class="text-slate-600 text-sm">Explore hybrid (PV + battery) to shift exports into evening use and gain backup power.</p>
+          <h3 class="font-semibold mb-1">Backup Value</h3>
+          <p class="text-slate-600 text-sm">Small batteries add resilience even on grid-tied systems.</p>
         </div>
         <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Budget & Roof Fit</h3>
-          <p class="text-slate-600 text-sm">Minimal grid-tie = lowest entry cost; net-zero needs more roof area; off-grid trades cost for autonomy.</p>
+          <h3 class="font-semibold mb-1">Extension Cost</h3>
+          <p class="text-slate-600 text-sm">Remote sites: compare $/ft grid extension vs off-grid CAPEX.</p>
         </div>
       </div>
     </section>
 
     <!-- Tool -->
     <section id="panel-tool" class="hidden space-y-4">
-      <h2 class="text-xl font-semibold">Solar Cost & Net-Metering Tool</h2>
-      <p class="text-slate-700">
-        This interactive calculator compares the levelized cost of electricity (LCOE) for on-grid and off-grid systems and
-        estimates net-metering bills. Enter your array size, production, load, and cost assumptions; then test buy/sell
-        rates to see how policy affects your annual bill. Outputs include on-grid and off-grid LCOE, a cost ratio, CAPEX
-        estimates, import/export energy, and your bill or credit.
-        <br />
-        <a href="https://docs.google.com/spreadsheets/d/1jTrXFmLzXCy0TXIiw_XwlHJ2nB2sb2O998to0cD4x3Q/edit?usp=sharing"
-           target="_blank" rel="noopener" class="underline text-sky-700 hover:text-sky-900">
-          View the underlying assumptions sheet →
-        </a>
-        <br />
-        This spreadsheet illustrates the logic behind the tool, helping you see how inputs translate into outputs before you run the calculator.
-        <a href="https://docs.google.com/spreadsheets/d/12FqZ9YDAah15jWPssPiA9imxBu3CvhvGLWp66T1pM1I/edit?usp=sharing"
-           target="_blank" rel="noopener" class="underline text-sky-700 hover:text-sky-900">
-          View the tool working here →
-        </a>
-        </a>
-        <br />
-        To find the Github page please find the link below. Once into the github page, Click "Code" green button → Download Zip. This will  downloaod a Zip file contain the website's html files. 
-        <a href="https://github.com/OneCommunityGlobal/SolarCostAnalysisTool"
-           target="_blank" rel="noopener" class="underline text-sky-700 hover:text-sky-900">
-          Github →
-        </a>
-      <br />
-        You can fine the tool demo video here. 
-        <a href="https://www.dropbox.com/scl/fi/ljhqksvkgxvkbx44cfdj8/Tool_demo.mp4?rlkey=rjb6jfobi8301x85baz7qxpwe&st=r45p3n5y&dl=0"
-           target="_blank" rel="noopener" class="underline text-sky-700 hover:text-sky-900">
-          Demo Video →
-        </a>
-       <br />
-        You can fine the website link here. 
-        <a href="https://onecommunityglobal.org/solar-energy-microgrid-setup-maintenance/"
-           target="_blank" rel="noopener" class="underline text-sky-700 hover:text-sky-900">
-          One Community - Solar Energy Microgrid Setup and Maintenance →
-        </a>
-      </p>
-      
+      <h2 class="text-xl font-semibold">Solar Sizing & Cost Tool (Net-Zero vs Off-Grid)</h2>
+
+      <div class="hint rounded-xl p-4 text-sm text-slate-700">
+        <p class="font-semibold mb-2">How to find each input:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><span class="font-semibold">Load (kWh):</span> Use last 12 months of utility bills; sum kWh (or compute average daily = annual/365). Off-grid cabins: estimate from appliances × hours/day.</li>
+          <li><span class="font-semibold">Solar irradiance (kWh/m²/day):</span> Use PVWatts (NREL) or Global Solar Atlas for your location. The tool multiplies by a Performance Ratio for losses.</li>
+          <li><span class="font-semibold">Distance from grid & $/ft:</span> Ask the utility/contractor for line extension quote; rural overhead vs underground differs widely.</li>
+          <li><span class="font-semibold">Panel details:</span> Module nameplate watts and price per module (or per W). Enter both; we’ll compute module count and installed $/W.</li>
+          <li><span class="font-semibold">Battery:</span> Enter nominal voltage, Ah per battery (or kWh per unit), days of autonomy, DoD, and $/kWh (or pack price/size). Tool sizes bank kWh and estimates cost.</li>
+          <li><span class="font-semibold">Inverter:</span> Peak kW needed (sum of coincident loads + surge factor) and $/kW. Off-grid inverters often cost more.</li>
+          <li><span class="font-semibold">Buy/Sell rates:</span> Your tariff’s import rate and export credit (or tariff-specific $/kWh).</li>
+          <li><span class="font-semibold">Installation:</span> Lump-sum labor/permits/inspection; add BOS if not in panel price.</li>
+        </ul>
+      </div>
+
       <div id="tool-root"></div>
       <p class="text-xs text-slate-500">Values last updated: <span id="updated-at">—</span></p>
     </section>
   </main>
 
   <footer class="mx-auto container-narrow px-6 pb-10 text-xs text-slate-500">
-    Content adapted from the One Community analysis and supporting notes. :contentReference[oaicite:0]{index=0}
+    Content adapted for educational comparison; use time-series tools and utility tariffs for final design.
   </footer>
 
   <!-- React + Babel -->
@@ -195,7 +149,6 @@
 
   <!-- Tabs logic + last-updated date -->
   <script>
-    // Set "last updated" to today's date (or replace with a fixed string like '2025-09-23')
     const UPDATED_AT = new Date().toISOString().slice(0,10);
     const ua = document.getElementById('updated-at');
     if (ua) ua.textContent = UPDATED_AT;
@@ -215,7 +168,6 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
     tabButtons.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
-    // default
     showTab('overview');
   </script>
 
@@ -223,89 +175,167 @@
   <script type="text/babel">
     const {useMemo, useState} = React;
 
+    // Small helpers
+    const clampPos = (v, def=0)=>Number.isFinite(v) && v>=0 ? v : def;
+    const CRF = (r,n)=>{ const rr=r; if(rr===0) return 1/Math.max(n,1); const t=Math.pow(1+rr,Math.max(n,1)); return (rr*t)/(t-1); };
+
     function App(){
-      const [inputs, setInputs] = useState({
-        pvSizeKw: 10,
-        annualProdKWh: 20075,
-        annualLoadKWh: 10950,
+      // ---------- Inputs ----------
+      const [i, setI] = useState({
+        // 1) Load
+        annualLoadKWh: 10950,                 // or set avgDailyKWh; we sync both
+        avgDailyKWh: 30,
+
+        // 2) Location irradiance + losses
+        irradiancePSH: 4.5,                   // kWh/m²/day ≈ peak sun hours
+        performanceRatio: 0.75,               // wiring/temp/soiling/inverter
+
+        // 3) Grid distance economics
+        distanceFromGridFt: 800,
+        costPerFoot: 20,
+
+        // 4) Panels (size & cost) + BOS + install
+        panelWatt: 400,                       // W per module
+        panelPriceUSD: 180,                   // $ per module
+        bosCostPerW: 0.6,                     // racking/wire/etc, $/Wdc
+        installLumpSum: 3000,                 // permits/labor if not in $/W
+        oversizeFactorOffGrid: 1.2,           // PV uplift for charging/seasonal
+
+        // 5) Battery (V, Ah, DoD, $/kWh, days autonomy, eff)
+        battVoltage: 48,                      // V (nominal bank)
+        battAhPerUnit: 100,                   // Ah per unit (for info)
+        battDoD: 80,                          // %
+        battDaysAutonomy: 2,                  // days
+        battRoundTripEff: 0.9,                // fraction
+        batteryCostPerKWh: 350,               // $/kWh (rated kWh)
+
+        // 6) Inverter (size & $/kW)
+        inverterBuyKW: 10,                    // grid-tie inverter size (≈ PV kW)
+        inverterCostPerKW: 180,               // grid-tie $/kW
+        inverterOffGridKW: 8,                 // off-grid inverter/charger size
+        inverterOffGridCostPerKW: 450,        // off-grid $/kW
+
+        // 7) Grid buy/sell
+        buyRate: 0.20,                        // $/kWh
+        sellRate: 0.10,                       // $/kWh credit
+
+        // 8) Financials
         discountRatePct: 6,
         analysisYears: 25,
-
-        panelCostPerW: 1.2,
-        infrastructureCostPerW: 0.15,   // NEW: infrastructure/site/trench/mount ($/W)
-        inverterCostPerKw: 150,
-        onmPctOfCapex: 1.0,
-
-        batteryKWh: 48,
-        batteryCostPerKWh: 350,
-        batteryLifeYears: 12,
-        offGridInverterAdderPerKw: 300,
-        generatorReservePerYear: 200,
-
-        buyRate: 0.20,
-        sellRate: 0.10,
+        onmPctOfCapex: 1.0,                   // %/yr for PV/BOS/inverters
+        generatorReservePerYear: 200          // off-grid annual reserve
       });
-      const set = (k,v)=>setInputs(s=>({...s,[k]:v}));
 
-      const CRF = (r,n)=>{ if(r===0) return 1/n; const t=Math.pow(1+r,n); return (r*t)/(t-1); };
+      // Keep daily/annual in sync gently
+      const set = (k,v)=>{
+        setI(s=>{
+          const n = {...s,[k]:v};
+          if(k==='annualLoadKWh') n.avgDailyKWh = clampPos(v/365, s.avgDailyKWh);
+          if(k==='avgDailyKWh')   n.annualLoadKWh = clampPos(v*365, s.annualLoadKWh);
+          return n;
+        });
+      };
 
-      const results = useMemo(()=>{
-        const r = inputs.discountRatePct/100;
-        const crf = CRF(r, inputs.analysisYears);
+      // ---------- Derived sizing ----------
+      const out = useMemo(()=>{
+        // Sanitize
+        const annualLoad = clampPos(i.annualLoadKWh);
+        const dailyLoad  = clampPos(i.avgDailyKWh);
+        const PR         = Math.min(Math.max(i.performanceRatio,0.4),0.9);
+        const PSH        = Math.max(i.irradiancePSH, 1e-6);  // kWh/m²/day ≈ sun hours
 
-        // On-grid CAPEX includes Infrastructure $/W
-        const pvCostPerW = inputs.panelCostPerW + inputs.infrastructureCostPerW;       // NEW
-        const onGridCapex = inputs.pvSizeKw*1000*pvCostPerW + inputs.pvSizeKw*inputs.inverterCostPerKw; // UPDATED
-        const onGridAnnualOnM = (inputs.onmPctOfCapex/100)*onGridCapex;
-        const onGridAnnualized = onGridCapex*crf + onGridAnnualOnM;
-        const lcoeOnGrid = onGridAnnualized / Math.max(inputs.annualProdKWh,1);
+        // Energy yield per 1 kWdc per year
+        const kWhPerKWyr = PSH * PR * 365;
 
-        const batteryCapex = inputs.batteryKWh*inputs.batteryCostPerKWh;
-        const batteryCRF = CRF(r, Math.max(1, Math.min(inputs.analysisYears, inputs.batteryLifeYears)));
-        const offGridCapexBase = onGridCapex + inputs.pvSizeKw*inputs.offGridInverterAdderPerKw;
-        const offGridAnnualOnM = (inputs.onmPctOfCapex/100)*offGridCapexBase + inputs.generatorReservePerYear;
-        const offGridAnnualized = offGridCapexBase*crf + batteryCapex*batteryCRF + offGridAnnualOnM;
-        const lcoeOffGrid = offGridAnnualized / Math.max(inputs.annualLoadKWh,1);
-        const ratio = lcoeOffGrid / Math.max(lcoeOnGrid,1e-9);
+        // ---- Net-zero grid-tie array size ----
+        const pvKW_netzero = clampPos(annualLoad / Math.max(kWhPerKWyr,1e-6));
+        const modules_net  = Math.ceil((pvKW_netzero*1000) / Math.max(i.panelWatt,1));
+        const panelsCost_net = modules_net * clampPos(i.panelPriceUSD);
+        const bosCost_net    = (pvKW_netzero*1000) * clampPos(i.bosCostPerW);
+        const inverterKW_net = Math.max(i.inverterBuyKW, pvKW_netzero); // allow user override but ensure >= array
+        const inverterCost_net = inverterKW_net * clampPos(i.inverterCostPerKW);
+        const gridExtension = clampPos(i.distanceFromGridFt) * clampPos(i.costPerFoot);
+        const capex_net = panelsCost_net + bosCost_net + inverterCost_net + clampPos(i.installLumpSum) + gridExtension;
 
-        const exportKWh = Math.max(0, inputs.annualProdKWh - inputs.annualLoadKWh);
-        const importKWh = Math.max(0, inputs.annualLoadKWh - inputs.annualProdKWh);
-        const annualBill = importKWh*inputs.buyRate - exportKWh*inputs.sellRate;
+        // Production for billing at net-zero sizing (≈ equals annual load)
+        const annualProd_net = pvKW_netzero * kWhPerKWyr;
+        const exportKWh_net = Math.max(0, annualProd_net - annualLoad);
+        const importKWh_net = Math.max(0, annualLoad - annualProd_net);
+        const annualBill_net = importKWh_net*i.buyRate - exportKWh_net*i.sellRate;
 
-        let thresholdRatio = '—';
-        if(importKWh>0 && exportKWh>0){ thresholdRatio = (exportKWh / importKWh); }
+        // ---- Off-grid battery sizing ----
+        // Required usable storage for autonomy days:
+        const usableKWh_needed = dailyLoad * Math.max(i.battDaysAutonomy,0);
+        // Rated bank kWh accounting for DoD and round-trip efficiency:
+        const battDoD = Math.min(Math.max(i.battDoD/100, 0.3), 0.95);
+        const rtEff   = Math.min(Math.max(i.battRoundTripEff, 0.7), 1);
+        const bankRatedKWh = usableKWh_needed / Math.max(battDoD*rtEff, 1e-6);
+
+        // Convert voltage/Ah info (for display only)
+        const unitKWh_fromVAh = (i.battVoltage * i.battAhPerUnit)/1000; // kWh per "unit"
+        const estUnits = unitKWh_fromVAh > 0 ? Math.ceil(bankRatedKWh / unitKWh_fromVAh) : 0;
+
+        const batteryCapex = bankRatedKWh * clampPos(i.batteryCostPerKWh);
+
+        // ---- Off-grid PV & inverter ----
+        // Off-grid PV sized for daily load with oversize to charge bank & seasonal headroom
+        const pvKW_off = clampPos( (dailyLoad * i.oversizeFactorOffGrid) / Math.max(PSH*PR,1e-6) );
+        const modules_off = Math.ceil((pvKW_off*1000) / Math.max(i.panelWatt,1));
+        const panelsCost_off = modules_off * clampPos(i.panelPriceUSD);
+        const bosCost_off    = (pvKW_off*1000) * clampPos(i.bosCostPerW);
+        const inverterKW_off = Math.max(i.inverterOffGridKW, dailyLoad/4); // rough guard; user controls this
+        const inverterCost_off = inverterKW_off * clampPos(i.inverterOffGridCostPerKW);
+        const capex_off = panelsCost_off + bosCost_off + inverterCost_off + batteryCapex + clampPos(i.installLumpSum); // no grid extension
+
+        // ---- LCOE math (annualized cost / annual energy) ----
+        const r = Math.max(i.discountRatePct/100, 0);
+        const N = Math.max(Math.round(i.analysisYears), 1);
+        const crf = CRF(r,N);
+
+        const onmPct = Math.max(i.onmPctOfCapex/100,0);
+
+        const annualOandM_net = onmPct*capex_net;
+        const annualized_net  = capex_net*crf + annualOandM_net;
+        const lcoe_net = annualized_net / Math.max(annualProd_net,1);
+
+        // Battery replacement treatment: approximate via CRF on bank with life = min(N, lifeGuess)
+        const battLifeGuess = 12; // you can expose if desired
+        const battCRF = CRF(r, Math.min(N, battLifeGuess));
+        const annualOandM_off = onmPct*(capex_off - batteryCapex) + clampPos(i.generatorReservePerYear);
+        const annualized_off  = (capex_off - batteryCapex)*crf + (batteryCapex*battCRF) + annualOandM_off;
+        const annualProd_off  = pvKW_off * kWhPerKWyr; // average-year energy available
+        const lcoe_off = annualized_off / Math.max(annualProd_off,1);
 
         return {
-          lcoeOnGrid, lcoeOffGrid, ratio,
-          onGridCapex,
-          offGridCapexBase: offGridCapexBase + batteryCapex,
-          exportKWh, importKWh, annualBill, thresholdRatio
+          // Net-zero
+          pvKW_netzero, modules_net, inverterKW_net,
+          panelsCost_net, bosCost_net, inverterCost_net, gridExtension, capex_net,
+          annualProd_net, exportKWh_net, importKWh_net, annualBill_net,
+
+          // Off-grid
+          pvKW_off, modules_off, inverterKW_off,
+          bankRatedKWh, estUnits, batteryCapex, panelsCost_off, bosCost_off, inverterCost_off, capex_off,
+
+          // LCOE
+          lcoe_net, lcoe_off,
+          ratio: lcoe_off / Math.max(lcoe_net,1e-9),
+
+          // Common
+          kWhPerKWyr, unitKWh_fromVAh
         };
-      }, [inputs]);
+      }, [i]);
 
-     const Field = ({ label, suffix, step = 0.01, min = 0, value, onChange }) => (
-  <label
-    className="
-      grid items-center gap-2 py-1
-      [grid-template-columns:1fr_8rem_5rem]
-    "
-  >
-    <span className="text-sm text-slate-600">{label}</span>
-
-    <input
-      type="number"
-      step={step}
-      min={min}
-      value={Number.isFinite(value) ? value : ''}
-      onChange={(e) => onChange(parseFloat(e.target.value))}
-      className="h-9 w-full rounded-md border border-slate-300 px-2 text-right"
-    />
-
-    {suffix && (
-      <span className="text-xs text-slate-500 text-left">{suffix}</span>
-    )}
-  </label>
-);
+      // ---------- UI bits ----------
+      const Field = ({ label, suffix, step = 0.01, min = 0, value, onChange, title }) => (
+        <label className="grid items-center gap-2 py-1 [grid-template-columns:1fr_8rem_5rem]" title={title||''}>
+          <span className="text-sm text-slate-600">{label}</span>
+          <input type="number" step={step} min={min}
+                 value={Number.isFinite(value) ? value : ''}
+                 onChange={(e)=>onChange(parseFloat(e.target.value))}
+                 className="h-9 w-full rounded-md border border-slate-300 px-2 text-right"/>
+          {suffix && <span className="text-xs text-slate-500 text-left">{suffix}</span>}
+        </label>
+      );
 
       const Card = ({title,children}) => (
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -314,10 +344,10 @@
         </div>
       );
 
-      const Stat = ({label,value,unit}) => (
+      const Stat = ({label,value,unit=''}) => (
         <div className="flex flex-col rounded-xl bg-slate-50 p-3 text-center">
           <div className="text-2xl font-semibold text-slate-800">
-            {isFinite(value) ? value.toLocaleString(undefined,{maximumFractionDigits:3}) : value}{unit}
+            {isFinite(value) ? value.toLocaleString(undefined,{maximumFractionDigits:3}) : '—'}{unit}
           </div>
           <div className="text-xs text-slate-500">{label}</div>
         </div>
@@ -326,74 +356,134 @@
       return (
         <div className="space-y-6">
           <p className="text-sm text-slate-600">
-            Compare on-grid vs off-grid levelized cost of electricity (LCOE) and estimate net-metering outcomes.
-            Edit the inputs; results update instantly. Assumes annual averages for simplicity.
+            Enter your load, irradiance, component details, and grid economics. The tool sizes a
+            <b> net-zero grid-tie</b> array and an <b>off-grid</b> PV + battery system, then compares CAPEX and LCOE.
           </p>
 
+          {/* Input groups */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="System & Energy">
-              <Field label="PV Size" suffix="kW" value={inputs.pvSizeKw} onChange={v=>set('pvSizeKw',v)} />
-              <Field label="Annual Production" suffix="kWh/yr" value={inputs.annualProdKWh} onChange={v=>set('annualProdKWh',v)} />
-              <Field label="Annual Load" suffix="kWh/yr" value={inputs.annualLoadKWh} onChange={v=>set('annualLoadKWh',v)} />
-              <Field label="Discount Rate" suffix="%" value={inputs.discountRatePct} onChange={v=>set('discountRatePct',v)} />
-              <Field label="Analysis Horizon" suffix="years" step={1} value={inputs.analysisYears} onChange={v=>set('analysisYears',v)} />
+            <Card title="1) Load">
+              <Field label="Annual Load" suffix="kWh/yr" value={i.annualLoadKWh} onChange={v=>set('annualLoadKWh',v)} />
+              <Field label="Avg Daily Load" suffix="kWh/day" value={i.avgDailyKWh} onChange={v=>set('avgDailyKWh',v)} />
             </Card>
 
-            <Card title="On-Grid Costs">
-              <Field label="Installed Cost (Panels+BOS+Install)" suffix="$ / W" value={inputs.panelCostPerW} onChange={v=>set('panelCostPerW',v)} />
-              <Field label="Infrastructure (site/trench/mount)" suffix="$ / W" value={inputs.infrastructureCostPerW} onChange={v=>set('infrastructureCostPerW',v)} />
-              <Field label="Inverter Reserve" suffix="$ / kW" value={inputs.inverterCostPerKw} onChange={v=>set('inverterCostPerKw',v)} />
-              <Field label="O&M" suffix="% of CAPEX / yr" value={inputs.onmPctOfCapex} onChange={v=>set('onmPctOfCapex',v)} />
+            <Card title="2) Site Solar">
+              <Field label="Irradiance (PSH)" suffix="kWh/m²/day" value={i.irradiancePSH} onChange={v=>set('irradiancePSH',v)}
+                     title="Peak Sun Hours ≈ average kWh/m²/day" />
+              <Field label="Performance Ratio" suffix="0–1" step={0.01} value={i.performanceRatio} onChange={v=>set('performanceRatio',v)} />
+              <div className="text-xs text-slate-500 mt-2">
+                Yield per 1 kW: {out.kWhPerKWyr.toFixed(0).toLocaleString()} kWh/yr
+              </div>
             </Card>
 
-            <Card title="Off-Grid Adders">
-              <Field label="Battery" suffix="kWh" value={inputs.batteryKWh} onChange={v=>set('batteryKWh',v)} />
-              <Field label="Battery Cost" suffix="$ / kWh" value={inputs.batteryCostPerKWh} onChange={v=>set('batteryCostPerKWh',v)} />
-              <Field label="Battery Life" suffix="years" step={1} value={inputs.batteryLifeYears} onChange={v=>set('batteryLifeYears',v)} />
-              <Field label="Off-Grid Controls Adder" suffix="$ / kW" value={inputs.offGridInverterAdderPerKw} onChange={v=>set('offGridInverterAdderPerKw',v)} />
-              <Field label="Generator Reserve" suffix="$ / yr" value={inputs.generatorReservePerYear} onChange={v=>set('generatorReservePerYear',v)} />
+            <Card title="3) Grid Distance">
+              <Field label="Distance from Grid" suffix="ft" value={i.distanceFromGridFt} onChange={v=>set('distanceFromGridFt',v)} />
+              <Field label="Cost per Foot" suffix="$ / ft" value={i.costPerFoot} onChange={v=>set('costPerFoot',v)} />
             </Card>
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="LCOE Results">
+            <Card title="4) Panels & Install">
+              <Field label="Panel Size" suffix="W" value={i.panelWatt} onChange={v=>set('panelWatt',v)} />
+              <Field label="Panel Price" suffix="$ / panel" value={i.panelPriceUSD} onChange={v=>set('panelPriceUSD',v)} />
+              <Field label="BOS Cost" suffix="$ / Wdc" value={i.bosCostPerW} onChange={v=>set('bosCostPerW',v)} />
+              <Field label="Install (lump sum)" suffix="$" value={i.installLumpSum} onChange={v=>set('installLumpSum',v)} />
+              <Field label="Off-Grid PV Oversize" suffix="×" value={i.oversizeFactorOffGrid} onChange={v=>set('oversizeFactorOffGrid',v)} />
+            </Card>
+
+            <Card title="5) Battery Bank">
+              <Field label="Bank Voltage" suffix="V" value={i.battVoltage} onChange={v=>set('battVoltage',v)} />
+              <Field label="Ah per Battery (info)" suffix="Ah" value={i.battAhPerUnit} onChange={v=>set('battAhPerUnit',v)} />
+              <Field label="Depth of Discharge" suffix="%" value={i.battDoD} onChange={v=>set('battDoD',v)} />
+              <Field label="Days of Autonomy" suffix="days" step={1} value={i.battDaysAutonomy} onChange={v=>set('battDaysAutonomy',v)} />
+              <Field label="Round-Trip Efficiency" suffix="0–1" value={i.battRoundTripEff} onChange={v=>set('battRoundTripEff',v)} />
+              <Field label="Battery Cost" suffix="$ / kWh (rated)" value={i.batteryCostPerKWh} onChange={v=>set('batteryCostPerKWh',v)} />
+            </Card>
+
+            <Card title="6) Inverters">
+              <Field label="Grid-Tie Inverter Size" suffix="kW" value={i.inverterBuyKW} onChange={v=>set('inverterBuyKW',v)} />
+              <Field label="Grid-Tie Cost" suffix="$ / kW" value={i.inverterCostPerKW} onChange={v=>set('inverterCostPerKW',v)} />
+              <Field label="Off-Grid Inverter Size" suffix="kW" value={i.inverterOffGridKW} onChange={v=>set('inverterOffGridKW',v)} />
+              <Field label="Off-Grid Cost" suffix="$ / kW" value={i.inverterOffGridCostPerKW} onChange={v=>set('inverterOffGridCostPerKW',v)} />
+            </Card>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Card title="7) Buy/Sell & 8) Financials">
+              <Field label="Buy Rate" suffix="$ / kWh" value={i.buyRate} onChange={v=>set('buyRate',v)} />
+              <Field label="Sell Credit" suffix="$ / kWh" value={i.sellRate} onChange={v=>set('sellRate',v)} />
+              <Field label="Discount Rate" suffix="%" value={i.discountRatePct} onChange={v=>set('discountRatePct',v)} />
+              <Field label="Analysis Horizon" suffix="yrs" step={1} value={i.analysisYears} onChange={v=>set('analysisYears',v)} />
+              <Field label="O&M" suffix="% of CAPEX / yr" value={i.onmPctOfCapex} onChange={v=>set('onmPctOfCapex',v)} />
+              <Field label="Generator Reserve (off-grid)" suffix="$ / yr" value={i.generatorReservePerYear} onChange={v=>set('generatorReservePerYear',v)} />
+            </Card>
+
+            <Card title="Net-Zero Grid-Tie (Results)">
               <div className="grid grid-cols-2 gap-3">
-                <Stat label="On-Grid LCOE" value={results.lcoeOnGrid} unit=" $/kWh" />
-                <Stat label="Off-Grid LCOE" value={results.lcoeOffGrid} unit=" $/kWh" />
-                <Stat label="Off-Grid / On-Grid" value={results.ratio} unit=" ×" />
-                <Stat label="On-Grid CAPEX" value={results.onGridCapex} unit=" $" />
-                <Stat label="Off-Grid CAPEX (incl. battery)" value={results.offGridCapexBase} unit=" $" />
+                <Stat label="Array Size" value={out.pvKW_netzero} unit=" kW" />
+                <Stat label="Modules" value={out.modules_net} />
+                <Stat label="Inverter Size" value={out.inverterKW_net} unit=" kW" />
+                <Stat label="Grid Extension" value={out.gridExtension} unit=" $" />
+                <Stat label="CAPEX (all-in)" value={out.capex_net} unit=" $" />
+                <Stat label="Annual Prod." value={out.annualProd_net} unit=" kWh/yr" />
+                <Stat label="Annual Bill (− credit)" value={out.annualBill_net} unit=" $" />
+              </div>
+              <div className="text-xs text-slate-500 mt-2">
+                CAPEX = Panels + BOS + Inverter + Install + Grid Extension.
+              </div>
+            </Card>
+
+            <Card title="Off-Grid (Results)">
+              <div className="grid grid-cols-2 gap-3">
+                <Stat label="PV Size" value={out.pvKW_off} unit=" kW" />
+                <Stat label="Modules" value={out.modules_off} />
+                <Stat label="Battery (rated)" value={out.bankRatedKWh} unit=" kWh" />
+                <Stat label="Est. Battery Units" value={out.estUnits} />
+                <Stat label="Inverter Size" value={out.inverterKW_off} unit=" kW" />
+                <Stat label="Battery Cost" value={out.batteryCapex} unit=" $" />
+                <Stat label="CAPEX (all-in)" value={out.capex_off} unit=" $" />
+              </div>
+              <div className="text-xs text-slate-500 mt-2">
+                CAPEX = Panels + BOS + Off-Grid Inverter + Batteries + Install (no grid extension).
+              </div>
+            </Card>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Card title="LCOE Comparison">
+              <div className="grid grid-cols-3 gap-3">
+                <Stat label="Net-Zero LCOE" value={out.lcoe_net} unit=" $/kWh" />
+                <Stat label="Off-Grid LCOE" value={out.lcoe_off} unit=" $/kWh" />
+                <Stat label="Off-Grid / Net-Zero" value={out.ratio} unit=" ×" />
               </div>
               <p className="mt-3 text-xs text-slate-500">
-                LCOE = (CAPEX × CRF + O&M + reserves) / Annual Energy. Battery is annualized with its own life.
+                Annualized cost via capital recovery factor (CRF). Batteries are annualized with a 12-year replacement proxy.
               </p>
             </Card>
 
-            <Card title="Net-Metering">
-              <Field label="Buy Rate" suffix="$ / kWh" value={inputs.buyRate} onChange={v=>set('buyRate',v)} />
-              <Field label="Sell Rate" suffix="$ / kWh" value={inputs.sellRate} onChange={v=>set('sellRate',v)} />
-              <div className="grid grid-cols-2 gap-3 mt-2">
-                <Stat label="Annual Export" value={results.exportKWh} unit=" kWh" />
-                <Stat label="Annual Import" value={results.importKWh} unit=" kWh" />
-                <Stat label="Annual Bill (− credit)" value={results.annualBill} unit=" $/yr" />
-                <Stat label="Break-even Buy/Sell Ratio" value={results.thresholdRatio} unit=" ×" />
-              </div>
-              <p className="mt-3 text-xs text-slate-500">
-                Break-even when Import×Buy = Export×Sell ⇒ buy/sell = export/import (when both are non-zero).
-              </p>
+            <Card title="Cost Breakdown (Net-Zero)">
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Panels: ${out.panelsCost_net.toLocaleString()}</li>
+                <li>BOS: ${out.bosCost_net.toLocaleString()}</li>
+                <li>Inverter: ${out.inverterCost_net.toLocaleString()}</li>
+                <li>Install: ${i.installLumpSum.toLocaleString()}</li>
+                <li>Grid Extension: ${out.gridExtension.toLocaleString()}</li>
+              </ul>
             </Card>
 
-            <Card title="How to read this">
-              <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                <li>Start with defaults; adjust PV size, production, and costs to match your case.</li>
-                <li>Compare <strong>LCOE</strong> values; storage usually makes off-grid kWh pricier today.</li>
-                <li>Use Net-Metering to test buy/sell rates and see when the bill flips to a credit.</li>
+            <Card title="Cost Breakdown (Off-Grid)">
+              <ul className="text-sm text-slate-700 space-y-1">
+                <li>Panels: ${out.panelsCost_off.toLocaleString()}</li>
+                <li>BOS: ${out.bosCost_off.toLocaleString()}</li>
+                <li>Off-Grid Inverter: ${out.inverterCost_off.toLocaleString()}</li>
+                <li>Batteries: ${out.batteryCapex.toLocaleString()}</li>
+                <li>Install: ${i.installLumpSum.toLocaleString()}</li>
               </ul>
             </Card>
           </div>
 
           <div className="text-xs text-slate-500">
-            This simple tool uses annual averages; for engineering design, use time-series simulators and utility-specific tariffs.
+            Notes: Uses annual averages; does not model hourly/seasonal tariffs or generator fuel. For engineering design, run time-series (e.g., PVWatts + tariff engine) and utility-specific interconnect rules.
           </div>
         </div>
       );
