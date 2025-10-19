@@ -143,19 +143,83 @@ Annual Bill ($) = (Import kWh × Buy Rate) − (Export kWh × Sell Rate)
     <section id="panel-cases" class="hidden space-y-6">
       <h2 class="text-xl font-semibold">Case Studies (Quick Read)</h2>
 
-      <div class="rounded-2xl bg-white border border-slate-200 p-5">
-        <h3 class="font-semibold">1) Off-Grid Cabin (8 kW + 48 kWh)</h3>
-        <p class="text-slate-700 text-sm">
-          Two days of autonomy, generator reserve for winter. Highest CAPEX; strong resilience.
-        </p>
-      </div>
+      <!-- Case 1 -->
+  <div class="rounded-2xl bg-white border border-slate-200 p-5 space-y-2">
+    <h3 class="font-semibold text-slate-800">1) Off-Grid Cabin (8 kW + 48 kWh)</h3>
+    <p class="text-slate-700 text-sm">
+      A remote cabin located 0.5 miles from the nearest grid line — avoiding costly grid extension (~$50,000+). 
+      The system includes an 8 kW PV array and a 48 kWh LiFePO₄ battery bank providing ~2 days of autonomy.
+    </p>
 
-      <div class="rounded-2xl bg-white border border-slate-200 p-5">
-        <h3 class="font-semibold">2) Net-Zero Suburban Roof (10 kW)</h3>
-        <p class="text-slate-700 text-sm">
-          Sized by irradiance × performance ratio; bill impact depends on buy/sell rates.
-        </p>
-      </div>
+    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+      <li><strong>Load:</strong> 9,000 kWh / year (≈ 25 kWh/day)</li>
+      <li><strong>Irradiance:</strong> 4.5 kWh/m²/day → annual yield ≈ 11,000 kWh</li>
+      <li><strong>Storage:</strong> 48 kWh usable at 80% DoD; battery life ≈ 12 years</li>
+      <li><strong>System Cost:</strong> ~$45,000 (PV + batteries + inverters + install)</li>
+      <li><strong>LCOE:</strong> ~$0.38 / kWh (higher due to storage replacement)</li>
+    </ul>
+
+    <p class="text-sm text-slate-700">
+      Includes a 3 kW generator for winter reserve and backup. No grid bill, full autonomy, but higher upfront cost.
+    </p>
+
+    <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-sm">
+      <strong>Takeaway:</strong> Ideal for remote or resilience-driven sites. 
+      Economic breakeven occurs when grid-extension cost &gt; $25 k–30 k.
+    </div>
+  </div>
+
+  <!-- Case 2 -->
+  <div class="rounded-2xl bg-white border border-slate-200 p-5 space-y-2">
+    <h3 class="font-semibold text-slate-800">2) Net-Zero Suburban Roof (10 kW)</h3>
+    <p class="text-slate-700 text-sm">
+      A typical suburban home in a region with 5.0 kWh/m²/day solar resource, annual load ≈ 10,500 kWh. 
+      The array is sized to generate ~ 110% of annual use, exporting surplus energy through net metering.
+    </p>
+
+    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+      <li><strong>Buy Rate:</strong> $0.20 / kWh</li>
+      <li><strong>Sell Credit:</strong> $0.10 / kWh (NEM 3.0 policy)</li>
+      <li><strong>System Cost:</strong> ~$23,000 (panels + inverter + install + permits)</li>
+      <li><strong>LCOE:</strong> ~$0.23 / kWh</li>
+      <li><strong>Payback:</strong> ~8 years with 30% ITC and current tariffs</li>
+    </ul>
+
+    <p class="text-sm text-slate-700">
+      Export credits reduce bills significantly; homeowner reaches net-zero on annual basis, with grid backup maintained.
+    </p>
+
+    <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-sm">
+      <strong>Takeaway:</strong> Excellent ROI under supportive net-metering policies. 
+      ROI declines if sell-credit &lt; 50% of buy rate.
+    </div>
+  </div>
+
+  <!-- Case 3 -->
+  <div class="rounded-2xl bg-white border border-slate-200 p-5 space-y-2">
+    <h3 class="font-semibold text-slate-800">3) Hybrid Microgrid (6 kW + 15 kWh Battery)</h3>
+    <p class="text-slate-700 text-sm">
+      A semi-rural home uses a hybrid system that remains grid-connected but includes a small 15 kWh battery for evening use 
+      and backup during outages. This setup balances economics and resilience.
+    </p>
+
+    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+      <li><strong>Load:</strong> 8,000 kWh / year</li>
+      <li><strong>Irradiance:</strong> 5.5 kWh/m²/day → annual generation ≈ 8,800 kWh</li>
+      <li><strong>Battery:</strong> 15 kWh usable; 1 day autonomy</li>
+      <li><strong>System Cost:</strong> ~$28,000 (PV + battery + inverter + install)</li>
+      <li><strong>LCOE:</strong> ~$0.27 / kWh</li>
+    </ul>
+
+    <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-sm">
+      <strong>Takeaway:</strong> Balanced middle-ground for reliability and self-consumption; mitigates low sell-rate penalties.
+    </div>
+  </div>
+
+  <p class="text-xs text-slate-500">
+    Content adapted for educational comparison; use time-series simulation (e.g., PVWatts + tariff engine) for design validation.
+  </p>
+     
     </section>
 
     <!-- Policy -->
