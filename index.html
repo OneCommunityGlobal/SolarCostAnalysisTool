@@ -43,23 +43,68 @@
     <section id="panel-overview" class="space-y-4">
       <h2 class="text-xl font-semibold">Overview</h2>
       <p class="text-slate-700">
-        Compare a <span class="font-semibold">net-zero grid-tied</span> design (sized to offset a year of use via credits) with a <span class="font-semibold">fully off-grid</span> design (PV + batteries sized for autonomy). Enter your load, site irradiance, component specs, and grid economics; the tool sizes arrays, batteries, and inverters, then estimates CAPEX and LCOE for each path.
-      </p>
+    This tool helps you compare two core design paths for residential and small-community solar systems:
+    a <strong>net-zero grid-tied</strong> system and a <strong>fully off-grid</strong> system.
+    Both can power the same load but differ in cost structure, reliability, and policy sensitivity.
+  </p>
 
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Grid-Tied (Net-Zero)</h3>
-          <p class="text-slate-600 text-sm">Targets ~100% annual offset; highly policy-sensitive (buy/sell rates).</p>
-        </div>
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Off-Grid</h3>
-          <p class="text-slate-600 text-sm">PV + storage sized for autonomy; higher CAPEX but independence.</p>
-        </div>
-        <div class="rounded-xl bg-white border border-slate-200 p-4">
-          <h3 class="font-semibold mb-1">Decision Hook</h3>
-          <p class="text-slate-600 text-sm">If grid extension is costly, off-grid may pencil out despite higher LCOE.</p>
-        </div>
-      </div>
+  <p class="text-slate-700">
+    The calculator estimates <strong>CAPEX</strong> (upfront cost) and <strong>LCOE</strong> 
+    (levelized cost of electricity — the average $/kWh over the system’s life).
+    Using your local irradiance, load, and component data, it automatically sizes panels, inverters, 
+    and batteries, then computes energy balance, grid bills, and overall economics.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="rounded-xl bg-white border border-slate-200 p-4">
+      <h3 class="font-semibold mb-1">Grid-Tied (Net-Zero)</h3>
+      <p class="text-slate-600 text-sm">
+        Designed to offset ~100% of annual energy use through grid exports and credits. 
+        Uses the grid for backup — no batteries required. 
+        Lowest cost per kWh, but depends on policy (buy/sell rate and net-metering terms).
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border border-slate-200 p-4">
+      <h3 class="font-semibold mb-1">Off-Grid</h3>
+      <p class="text-slate-600 text-sm">
+        Independent of the utility grid, with solar and batteries sized for multi-day autonomy. 
+        Provides resilience and energy security but requires higher CAPEX, periodic battery replacements, 
+        and careful load management.
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border border-slate-200 p-4">
+      <h3 class="font-semibold mb-1">Decision Hook</h3>
+      <p class="text-slate-600 text-sm">
+        If grid extension is <strong>expensive or unavailable</strong>, off-grid may be cheaper overall 
+        despite a higher LCOE. Otherwise, a grid-tied system provides faster payback and lower complexity.
+      </p>
+    </div>
+  </div>
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 space-y-2">
+    <h3 class="font-semibold">When to Choose Each Path</h3>
+    <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+      <li><strong>Choose Grid-Tied</strong> if the grid is available, export credit policies are fair, and reliability is high.</li>
+      <li><strong>Choose Off-Grid</strong> if grid connection costs exceed ~$20–30k or reliability/outage risk is unacceptable.</li>
+      <li><strong>Choose Hybrid</strong> (PV + small battery) if export credits are low and you want partial backup power.</li>
+    </ul>
+  </div>
+
+  <div class="rounded-xl bg-white border border-slate-200 p-4">
+    <h3 class="font-semibold mb-1">Key Metrics Explained</h3>
+    <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+      <li><strong>CAPEX:</strong> Total upfront investment (panels, batteries, inverter, installation, and grid costs).</li>
+      <li><strong>LCOE:</strong> Present-value cost of energy per kWh over system lifetime.</li>
+      <li><strong>Autonomy:</strong> Number of days the system can operate without solar input (relevant for off-grid).</li>
+      <li><strong>Payback:</strong> Years required for savings to equal initial investment (for grid-connected systems).</li>
+    </ul>
+  </div>
+
+  <p class="text-xs text-slate-500">
+    Content adapted for educational comparison; use time-series modeling (e.g., PVWatts, SAM) and actual tariffs for design accuracy.
+  </p>
     </section>
 
     <!-- Net Metering -->
