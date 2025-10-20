@@ -359,6 +359,35 @@ Annual Bill ($) = (Import kWh × Buy Rate) − (Export kWh × Sell Rate)
   Enter your array size, production, load, and cost assumptions — then test 
   <strong>buy/sell rates</strong> to see how policy changes affect your annual bill.
 
+  <!-- How to Use the Calculator Tool -->
+<div class="rounded-xl bg-white border border-slate-200 p-5 space-y-3 mt-6">
+  <h3 class="text-lg font-semibold text-slate-800">How to Use the Calculator Tool</h3>
+  <p class="text-slate-700 text-sm">
+    This section describes what each variable means and where to find the values you’ll need for the calculator.
+    It follows the spreadsheet tabs: <strong>Inputs</strong>, <strong>Definitions</strong>, <strong>Calculations</strong>, 
+    <strong>NetMetering</strong>, and <strong>Examples</strong>.
+  </p>
+
+  <ul class="list-disc pl-6 text-sm text-slate-700 space-y-1">
+    <li><strong>Array Size (kW):</strong> Total PV capacity — use your installer’s quote or system design target.</li>
+    <li><strong>Annual Load (kWh):</strong> Yearly household or facility electricity use from your utility bills.</li>
+    <li><strong>Irradiance (kWh/m²/day):</strong> Local solar potential from NREL PVWatts or Global Solar Atlas.</li>
+    <li><strong>Performance Ratio (PR):</strong> Accounts for inverter and wiring losses; typically 0.75–0.85.</li>
+    <li><strong>Battery Capacity (kWh):</strong> Total usable storage; multiply nominal by depth of discharge (DoD).</li>
+    <li><strong>Buy Rate ($/kWh):</strong> Grid electricity price from your tariff.</li>
+    <li><strong>Sell Credit ($/kWh):</strong> Rate paid for exports under your net-metering policy.</li>
+    <li><strong>CAPEX:</strong> Total installed cost including modules, inverter, battery, and <em>BOS</em> (Balance of System).</li>
+    <li><strong>O&M:</strong> Annual operating and maintenance cost, usually 1–2% of CAPEX.</li>
+    <li><strong>CRF (Capital Recovery Factor):</strong> Converts upfront CAPEX to an annualized cost based on discount rate and lifetime.</li>
+    <li><strong>LCOE (Levelized Cost of Electricity):</strong> Average lifetime cost per kWh produced.</li>
+  </ul>
+
+  <p class="text-xs text-slate-500">
+    Tip: You can estimate irradiance and performance ratio using free tools like PVWatts, and obtain buy/sell rates directly from your utility tariff sheet.
+  </p>
+</div>
+
+       
   <br><br>
   Outputs include:
   <ul class="list-disc pl-6 text-slate-700 text-sm space-y-1">
